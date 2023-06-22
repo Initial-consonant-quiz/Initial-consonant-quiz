@@ -20,7 +20,7 @@
         <!-- <h2 style="margin: 5px 0 20px 0 ;">초성 : </h2>
         <h2 style="margin : 0 auto 0 250px; font-size: 30px;"> ㅇㅅ  </h2>
         <div class="time"><h3>10</h3></div> -->
-        <div id = "question">sss</div>
+        <div id = "question" value = "">sss</div>
         <div id = "timer">00</div>
 
     </div>
@@ -101,8 +101,8 @@
      const randomElements = getRandomElements(consonant, 2);
      console.log(randomElements[0],randomElements[1])
      question.innerText = `제시어 : [ ${randomElements[0]} `+` ${randomElements[1]} ]`
-    //  timestart = setInterval("myTimer()",1000);
-
+     timestart = setInterval("myTimer()",1000);
+    question.value = `${randomElements[0]}${randomElements[1]}`
    })
    function myTimer() {
    count = count - 1; // 타이머 선택 숫자에서 -1씩 감산함(갱신되기 때문)
@@ -112,7 +112,26 @@
    if(count == 0) { 
      clearInterval(timestart);	// 시간 초기화
      count = 11
-    //  timestart = setInterval("myTimer()",1000);
+     let consonant = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']
+     function getRandomElements(array, count) {
+       const result = [];
+
+       for (let i = 0; i < count; i++) {
+         const randomIndex = Math.floor(Math.random() * array.length);
+         result.push(array[randomIndex]);
+       }
+
+       return result;
+     }
+
+     const randomElements = getRandomElements(consonant, 2);
+     console.log(randomElements[0],randomElements[1])
+     question.innerText = `제시어 : [ ${randomElements[0]} `+` ${randomElements[1]} ]`
+     
+    question.value = `${randomElements[0]}${randomElements[1]}`
+
+
+     timestart = setInterval("myTimer()",1000);
      alert("시간이 완료되었습니다.")
    }
  }
