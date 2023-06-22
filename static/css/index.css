@@ -1,18 +1,13 @@
 /* 메인 */
 #main {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 20px;
   border-radius: 20px;
-  background-color: lightblue;
   text-align: center;
-  width: 500px;
-  height: 800px;
 }
 
 /* 채팅 영역 */
 #chat {
-  height: 90%;
-  width: 100%;
   overflow-y: auto;
 }
 
@@ -32,6 +27,7 @@
   background-color: indianred;
   text-align: center;
   margin-top: 10px;
+  /* height: 25px; */
 }
 
 /* 내가 보낸 메시지 */
@@ -41,6 +37,7 @@
   background-color: lemonchiffon;
   border-radius: 5px;
   margin-top: 10px;
+  /* height: 25px; */
 }
 
 /* 상대방이 보낸 메시지 */
@@ -50,4 +47,5 @@
   background-color: white;
   border-radius: 5px;
   margin-top: 10px;
+  /* height: 25px; */
 }
