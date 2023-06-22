@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="computerNetwork1_css.css">
+
+<html>
+
+<head>
+    <title> 초성맞추기 </title>
+</head>
+
+
+<body>
+    <h1 style="text-align:center; "> 초성 맞추기</h1>
+    <div class="quiz_box" >
+        <h2 style="margin: 5px 0 20px 0 ;">초성 : </h2>
+        <h2 style="margin : 0 auto 0 250px; font-size: 30px;"> ㅇㅅ  </h2>
+        <div class="time"><h3>10</h3></div>
+
+    </div>
+
+</body>
+<main style="display: flex; justify-content: center;">
+    <div class="side_box" >
+        <h2>랭킹</h2>
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#fbff27; float: left; margin-top: 20px;">
+                <h2>1</h2>
+            </div>
+            <div class = "user_name" style="margin-top: 20px;"> 1등 user </div>
+            <div class="score_circle" style="margin-top: 23px;"> 13 </div>
+        </div>
+
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#d8d8d8; float: left; margin-top: 20px;">
+                <h2>2</h2>
+            </div>
+            <div class = "user_name" style="margin-top: 20px;"> 2등 user </div>
+            <div class="score_circle" style="margin-top: 23px;"> 13 </div>
+        </div>
+
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#ddbe36; float: left; margin-top: 20px;">
+                <h2>3</h2>
+            </div>
+            <div class = "user_name" style="margin-top: 20px;"> 3등 user </div>
+            <div class="score_circle" style="margin-top: 23px;"> 13 </div>
+        </div>
+    </div>
+
+
+    <div class = "centerbox">
+        <div class="chatbox">
+            <div class="next">다음문제로 넘어갑니다. 다음 초성은 -- 입니다.</div>
+            <div style="display:flex; flex-direction: column;">
+                
+                <div style="display:flex; margin-top : 10px;">    
+                    <h3 class="send_name" style="float: left;">1등 user</h3>
+                    <div class="score_circle">13</div>
+                </div>
+                <div class="chat receivechat">
+                    <div class="textbox">초성입력</div>
+                </div>
+            </div>
+
+
+            <div style="display:flex; flex-direction: column;">
+
+                <div style="float:right; margin: 10px 0 0 auto;">
+    
+                    <h3 class="send_name" >me</h3>                    
+                    <div class="score_circle">13</div>
+                </div>
+               
+     
+                <div class="chat sendchat">
+                    <div class="textbox">초성입력</div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class = "input_text">
+            <form action="php" method="post">
+                <input type="text" name="input" size=50>
+                <input type="submit" value="전송">
+              </form>
+        </div>
+        
+    </div>
+
+    <div class="side_box" >
+        <h2>참여자 목록</h2><br>
+
+        <div class = "user_name">1등 user</div>
+        <div class = "user_name">2등 user</div>
+        <div class = "user_name">3등 user</div>       
+    </div>
+
+
+</main>
+</html>
