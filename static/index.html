@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="css/computerNetwork1_css.css">
-
 <html>
-
 <head>
    <meta charset="utf-8">
     <title> 초성맞추기 </title>
-    <script src="/js/index.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="/css/index.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
   </head>
 
 
@@ -23,7 +21,7 @@
 
 </body>
 <main style="display: flex; justify-content: center;">
-    <div class="side_box" >
+    <div class="side_box" hidden>
         <h2>랭킹</h2>
         <div style="display: flex;">
             <div class = "rank_circle" style="background-color:#fbff27; float: left; margin-top: 20px;">
@@ -53,7 +51,7 @@
 
     <div id="main" class = "centerbox">
         <div  id="chat" class="chatbox">
-            <div class="next">다음문제로 넘어갑니다. 다음 초성은 -- 입니다.</div>
+            <div class="next" hidden>다음문제로 넘어갑니다. 다음 초성은 -- 입니다.</div>
         </div>
 
         <div class = "input_text">
