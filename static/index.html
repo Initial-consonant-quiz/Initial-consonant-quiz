@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="css/computerNetwork1_css.css">
+<html>
+<head>
+   <meta charset="utf-8">
+    <title> 초성맞추기 </title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/matching.js"></script>
+  </head>
+
+
+
+<body>
+    <h1 style="text-align:center; "> 초성 맞추기</h1>
+    <div class="quiz_box" >
+        <!-- <h2 style="margin: 5px 0 20px 0 ;">초성 : </h2> -->
+        <h2 id = "question1" style="margin : 0 auto 0 250px; font-size: 30px;"> ㅇㅅ  </h2>
+        <div id = "timer" class="time"><h3>10</h3></div>
+        <!-- <div id = "question" value = "">sss</div>
+        <div id = "timer">00</div> -->
+
+    </div>
+
+</body>
+<main style="display: flex; justify-content: center;">
+    <div class="side_box">
+        <h2>랭킹</h2>
+        <div id="wordContainer"></div>
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#fbff27; float: left; margin-top: 20px;">
+                <h2>1</h2>
+            </div>
+            <div class = "user_name" id = "user_name1" style="margin-top: 20px;"> 1등 user </div>
+            <div class="score_circle" score = "user_score1" style="margin-top: 23px;"> 13 </div>
+        </div>
+
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#d8d8d8; float: left; margin-top: 20px;">
+                <h2>2</h2>
+            </div>
+            <div class = "user_name" id = "user_name2" style="margin-top: 20px;"> 2등 user </div>
+            <div class="score_circle" score = "user_score2" style="margin-top: 23px;"> 13 </div>
+        </div>
+
+        <div style="display: flex;">
+            <div class = "rank_circle" style="background-color:#ddbe36; float: left; margin-top: 20px;">
+                <h2>3</h2>
+            </div>
+            <div class = "user_name" id = "user_name3" style="margin-top: 20px;"> 3등 user </div>
+            <div class="score_circle" score = "user_score3" style="margin-top: 23px;"> 13 </div>
+        </div>
+    </div>
+
+
+    <div id="main" class = "centerbox">
+        <div  id="chat" class="chatbox">
+            <div class="next" hidden>다음문제로 넘어갑니다. 다음 초성은 -- 입니다.</div>
+        </div>
+
+        <div class = "input_text">
+          <input type="text" id="test" placeholder="메시지를 입력해주세요..">
+          <button onclick="send()">전송</button>
+        </div>
+        
+    </div>
+
+    <div id="rank" class="side_box" >
+        <h2>참여자 목록</h2><br>
+        <div class = "user_name" id = "user_name1" style="margin-top: 20px;"> 1등 user </div>
+
+        <!-- <div class = "user_name">1등 user</div>
+        <div class = "user_name">2등 user</div>
+        <div class = "user_name">3등 user</div>        -->
+    </div>
+
+
+</main>
+<script>
+   
+  var count = 11;
+  var timestart = 0;
+   $(document).ready(function() {
+     clearInterval(timestart);
+     console.log("start")
+     let consonant = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']
+     let question = document.getElementById("question");
+     
+     function getRandomElements(array, count) {
+       const result = [];
+
+       for (let i = 0; i < count; i++) {
+         const randomIndex = Math.floor(Math.random() * array.length);
+         result.push(array[randomIndex]);
+       }
+
+       return result;
+     }
+
+     const randomElements = getRandomElements(consonant, 2);
+     console.log(randomElements[0],randomElements[1])
+     question.innerText = `제시어 : [ ${randomElements[0]} `+` ${randomElements[1]} ]`
+     timestart = setInterval("myTimer()",1000);
+    question.value = `${randomElements[0]}${randomElements[1]}`
+   })
+   function myTimer() {
+   count = count - 1; // 타이머 선택 숫자에서 -1씩 감산함(갱신되기 때문)
+   
+   document.getElementById("timer").innerHTML
+     = count;
+   if(count == 0) { 
+     clearInterval(timestart);	// 시간 초기화
+     count = 11
+     let consonant = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']
+     function getRandomElements(array, count) {
+       const result = [];
+
+       for (let i = 0; i < count; i++) {
+         const randomIndex = Math.floor(Math.random() * array.length);
+         result.push(array[randomIndex]);
+       }
+
+       return result;
+     }
+
+     const randomElements = getRandomElements(consonant, 2);
+     console.log(randomElements[0],randomElements[1])
+     question.innerText = `제시어 : [ ${randomElements[0]} `+` ${randomElements[1]} ]`
+     
+     question.value = `${randomElements[0]}${randomElements[1]}`
+
+   
+     timestart = setInterval("myTimer()",1000);
+
+     let chat = document.getElementById("chat");
+     chat.innerHTML += `<div class="disconnect">시간이 완료되었습니다. 다음문제로 넘어갑니다.</div>`
+     console.log("user_list",user_list)
+    //  alert("시간이 완료되었습니다.")
+   }
+ }
+ </script>
+</html>
+

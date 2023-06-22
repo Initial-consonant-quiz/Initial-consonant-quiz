@@ -1,0 +1,53 @@
+/* 메인 */
+#main {
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  text-align: center;
+  height: 650px;
+}
+
+/* 채팅 영역 */
+#chat {
+  overflow-y: auto;
+  height: 500px;
+}
+
+/* 접속 알림 */
+.connect {
+  width: 90%;
+  margin: auto;
+  background-color: aquamarine;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 접속 종료 알림 */
+.disconnect {
+  width: 90%;
+  margin: auto;
+  background-color: indianred;
+  text-align: center;
+  margin-top: 10px;
+  /* height: 25px; */
+}
+
+/* 내가 보낸 메시지 */
+.me {
+  width: 90%;
+  margin: auto;
+  background-color: lemonchiffon;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* height: 25px; */
+}
+
+/* 상대방이 보낸 메시지 */
+.other {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* height: 25px; */
+}
