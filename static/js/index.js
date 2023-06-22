@@ -14,10 +14,10 @@ socket.on('connect', function() {
   /* 서버에 새로운 유저가 왔다고 알림 */
   socket.emit('newUser', name)
 
-  let rank = document.getElementById("rank");
-  rank.innerHTML += `<div class="user_name">${name}</div>`
-  user_list.push(name)
-  console.log("user_list",user_list)
+  // let rank = document.getElementById("rank");
+  // rank.innerHTML += `<div class="user_name">${name}</div>`
+  // user_list.push(name)
+  // console.log("user_list",user_list)
 })
 
 /* 서버로부터 데이터 받은 경우 */
