@@ -4,11 +4,13 @@
   margin-top: 20px;
   border-radius: 20px;
   text-align: center;
+  height: 650px;
 }
 
 /* 채팅 영역 */
 #chat {
   overflow-y: auto;
+  height: 500px;
 }
 
 /* 접속 알림 */
