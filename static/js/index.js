@@ -1,6 +1,6 @@
 var socket = io()
 var user_list = []
-var rank = []
+
 
 /* 접속 되었을 때 실행 */
 socket.on('connect', function () {
@@ -12,17 +12,10 @@ socket.on('connect', function () {
     name = '익명'
   }
 
-  rank.push({"id":name, "score":0});
-  console.log("ㅁㄴㅇㄻㄴㅇㄹ")
-  console.log(rank)
 
   /* 서버에 새로운 유저가 왔다고 알림 */
   socket.emit('newUser', name)
 
-  // let rank = document.getElementById("rank");
-  // rank.innerHTML += `<div class="user_name">${name}</div>`
-  // user_list.push(name)
-  // console.log("user_list",user_list)
 })
 
 /* 서버로부터 데이터 받은 경우 */
@@ -53,10 +46,6 @@ socket.on('update', function (data) {
 
     case 'disconnect':
       className = 'disconnect'
-      rank = rank.filter(function(item) {
-        return item.id !== idToDelete;
-      });
-
       break
   }
 
@@ -68,7 +57,6 @@ socket.on('update', function (data) {
 
 /* 메시지 전송 함수 */
 function send() {
-  // console.log("ㅁㄴㅇㄻㄴㅇㄹ")
   // 입력되어있는 데이터 가져오기
   var message = document.getElementById('test').value
   
@@ -94,21 +82,6 @@ function send() {
     msg.appendChild(node)
     chat.appendChild(msg)
     socket.emit('message', { type: 'message', message: message })
-
-    rank = rank.map(function (item) {
-      if (item.id === idToUpdate) {
-        return { ...item, score: item.score + 1 };
-      }
-      return item;
-    });
-
-    rank.sort(function compare(a, b) {
-      return a.score - b.score;
-    });
-
-    scoreUpdate();
-
-
   } else {
     alert("초성을 잘못 입력하셨습니다")
   }
@@ -135,14 +108,3 @@ function sumInitial(word) { // 두 글자로 나눠 초성 더하기
 
   return initial(stWord) + initial(lsWord);
 }
-
-function scoreUpdate(){
-  for (var i = 0; i < 3; i++) {
-    var userNameDiv = document.querySelector('#user_name' + (i + 1));
-    var userScoreDiv = document.querySelector('#user_score' + (i + 1));
-    if (userNameDiv) {
-      userNameDiv.innerHTML = rank[i].id;
-      userScoreDiv.innerHTML = rank[i].score;
-    }
-  }
- }

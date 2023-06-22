@@ -91,6 +91,5 @@ function generateRandomWords(count) {
     var randomIndex = Math.floor(Math.random() * characters.length);
     randomWords.push(characters[randomIndex]);
   }
-  console.log(randomWords)
   return randomWords;
 }
