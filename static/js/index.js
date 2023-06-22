@@ -1,6 +1,6 @@
 var socket = io()
 var user_list = []
-
+var know = ""
 
 /* 접속 되었을 때 실행 */
 socket.on('connect', function () {
@@ -22,8 +22,10 @@ socket.on('connect', function () {
 
 socket.on('broadcast', function(data) {
   // broadcast된 랜덤 문자 처리
-  var wordContainer = document.getElementById('question1');
+  wordContainer = document.getElementById('question1');
+  know = data.join('');
   wordContainer.textContent = data.join(''); // 받은 문자를 요소에 표시
+
 });
 
 socket.on('update', function (data) {
@@ -56,19 +58,16 @@ socket.on('update', function (data) {
 })
 
 /* 메시지 전송 함수 */
-function send() {
+function send() {console
   // 입력되어있는 데이터 가져오기
   var message = document.getElementById('test').value
-  
-  var answer_consonant = document.getElementById('question1')
-  console.log(answer_consonant)
+  // var answer_consonant = document.getElementById('question1').value
+  var answer_consonant = know
   // 가져왔으니 데이터 빈칸으로 변경
   document.getElementById('test').value = ''
   let answer = sumInitial(message)
   console.log(answer)
 
-  
-  
 
   // 내가 전송할 메시지 클라이언트에게 표시
 
